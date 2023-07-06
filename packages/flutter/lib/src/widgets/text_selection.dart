@@ -236,10 +236,10 @@ class TextSelectionOverlay {
     VoidCallback? onSelectionHandleTapped,
     ClipboardStatusNotifier? clipboardStatus,
   }) : assert(value != null),
-       assert(context != null),
-       assert(handlesVisible != null),
-       _handlesVisible = handlesVisible,
-       _value = value {
+        assert(context != null),
+        assert(handlesVisible != null),
+        _handlesVisible = handlesVisible,
+        _value = value {
     renderObject.selectionStartInViewport.addListener(_updateTextSelectionOverlayVisibilities);
     renderObject.selectionEndInViewport.addListener(_updateTextSelectionOverlayVisibilities);
     _updateTextSelectionOverlayVisibilities();
@@ -547,10 +547,10 @@ class TextSelectionOverlay {
   }
 
   TextSelectionHandleType _chooseType(
-      TextDirection textDirection,
-      TextSelectionHandleType ltrType,
-      TextSelectionHandleType rtlType,
-      ) {
+    TextDirection textDirection,
+    TextSelectionHandleType ltrType,
+    TextSelectionHandleType rtlType,
+  ) {
     if (_selection.isCollapsed) {
       return TextSelectionHandleType.collapsed;
     }
@@ -600,11 +600,11 @@ class SelectionOverlay {
     this.onSelectionHandleTapped,
     Offset? toolbarLocation,
   }) : _startHandleType = startHandleType,
-       _lineHeightAtStart = lineHeightAtStart,
-       _endHandleType = endHandleType,
-       _lineHeightAtEnd = lineHeightAtEnd,
-       _selectionEndpoints = selectionEndpoints,
-       _toolbarLocation = toolbarLocation {
+        _lineHeightAtStart = lineHeightAtStart,
+        _endHandleType = endHandleType,
+        _lineHeightAtEnd = lineHeightAtEnd,
+        _selectionEndpoints = selectionEndpoints,
+        _toolbarLocation = toolbarLocation {
     final OverlayState? overlay = Overlay.of(context, rootOverlay: true);
     assert(
       overlay != null,
@@ -839,7 +839,7 @@ class SelectionOverlay {
     ];
 
     Overlay.of(context, rootOverlay: true, debugRequiredFor: debugRequiredFor)!
-      .insertAll(_handles!);
+        .insertAll(_handles!);
   }
 
   /// {@template flutter.widgets.SelectionOverlay.hideHandles}
@@ -989,12 +989,12 @@ class SelectionOverlay {
     );
 
     final bool isMultiline = selectionEndpoints.last.point.dy - selectionEndpoints.first.point.dy >
-        lineHeightAtEnd / 2;
+            lineHeightAtEnd / 2;
 
     // If the selected text spans more than 1 line, horizontally center the toolbar.
     // Derived from both iOS and Android.
     final double midX = isMultiline
-      ? editingRegion.width / 2
+        ? editingRegion.width / 2
       : (selectionEndpoints.first.point.dx + selectionEndpoints.last.point.dx) / 2;
 
     final Offset midpoint = Offset(
@@ -1430,10 +1430,10 @@ class TextSelectionGestureDetectorBuilder {
   // Returns true iff either shift key is currently down.
   bool get _isShiftPressed {
     return HardwareKeyboard.instance.logicalKeysPressed
-      .any(<LogicalKeyboardKey>{
-        LogicalKeyboardKey.shiftLeft,
-        LogicalKeyboardKey.shiftRight,
-      }.contains);
+        .any(<LogicalKeyboardKey>{
+      LogicalKeyboardKey.shiftLeft,
+      LogicalKeyboardKey.shiftRight,
+    }.contains);
   }
 
   // True iff a tap + shift has been detected but the tap has not yet come up.
@@ -1581,11 +1581,11 @@ class TextSelectionGestureDetectorBuilder {
           break;
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
-          if (isShiftPressedValid) {
-            _isShiftTapping = true;
-            _extendSelection(details.globalPosition, SelectionChangedCause.tap);
-            return;
-          }
+          // if (isShiftPressedValid) {
+          //   _isShiftTapping = true;
+          //   _extendSelection(details.globalPosition, SelectionChangedCause.tap);
+          //   return;
+          // }
           renderEditable.selectPosition(cause: SelectionChangedCause.tap);
           break;
         case TargetPlatform.iOS:
@@ -2300,7 +2300,7 @@ class ClipboardStatusNotifier extends ValueNotifier<ClipboardStatus> with Widget
       case AppLifecycleState.detached:
       case AppLifecycleState.inactive:
       case AppLifecycleState.paused:
-        // Nothing to do.
+      // Nothing to do.
     }
   }
 
